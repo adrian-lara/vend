@@ -7,15 +7,15 @@ feature 'When a user visits a vending machine show page' do
     snack_1 = Snack.create(name: "drink_1", price: 1.00)
     snack_2 = Snack.create(name: "drink_2", price: 2.00)
     snack_3 = Snack.create(name: "drink_3", price: 1.50)
-    MachineSnacks.create(machine: dons, snack: snack_1)
-    MachineSnacks.create(machine: dons, snack: snack_2)
-    MachineSnacks.create(machine: dons, snack: snack_3)
+    MachineSnack.create(machine: dons, snack: snack_1)
+    MachineSnack.create(machine: dons, snack: snack_2)
+    MachineSnack.create(machine: dons, snack: snack_3)
 
     visit machine_path(dons)
 
     expect(page).to have_content("Don's Mixed Drinks Vending Machine")
-    expect(page).to have_content("drink_1: $1.00")
-    expect(page).to have_content("drink_2: $2.00")
-    expect(page).to have_content("drink_3: $1.50")
+    expect(page).to have_content("drink_1: $1.0")
+    expect(page).to have_content("drink_2: $2.0")
+    expect(page).to have_content("drink_3: $1.5")
   end
 end
