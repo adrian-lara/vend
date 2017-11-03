@@ -9,6 +9,7 @@ describe "When a user visits a snack show page" do
     @snack_2 = Snack.create(name: "drink_2", price: 2.00)
     @snack_3 = Snack.create(name: "drink_3", price: 1.50)
     MachineSnack.create(machine: @machine_1, snack: @snack_1)
+    MachineSnack.create(machine: @machine_2, snack: @snack_1)
     MachineSnack.create(machine: @machine_2, snack: @snack_2)
     MachineSnack.create(machine: @machine_1, snack: @snack_3)
   end
@@ -16,8 +17,9 @@ describe "When a user visits a snack show page" do
   it "the user can see snack name, price, and locations" do
     visit snack_path(@snack_1)
 
+# save_and_open_page
     expect(page).to have_content(@snack_1.name)
-    expect(page).to have_content("Price: #{@snack_1.name}")
-    expect(page).to have_content("Locations: #{@machine_1.location}, #{@machine_2.location}")
+    expect(page).to have_content("Price: $#{@snack_1.price}")
+    expect(page).to have_content("Locations: [#{@machine_1.location}, #{@machine_2.location}]")
   end
 end
