@@ -17,7 +17,6 @@ describe "When a user visits a snack show page" do
   it "the user can see snack name, price, and locations" do
     visit snack_path(@snack_1)
 
-# save_and_open_page
     expect(page).to have_content(@snack_1.name)
     expect(page).to have_content("Price: $#{@snack_1.price}")
     expect(page).to have_content("Locations: [#{@machine_1.location}, #{@machine_2.location}]")
