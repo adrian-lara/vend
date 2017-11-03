@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'When a user visits a vending machine show page' do
-  scenario 'they see the location and a list of snacks of that machine' do
+  scenario 'they see the location, a list of snacks, and the average price of a snack for that machine' do
     owner = Owner.create(name: "Sam's Snacks")
     dons  = owner.machines.create(location: "Don's Mixed Drinks")
     snack_1 = Snack.create(name: "drink_1", price: 1.00)
@@ -17,5 +17,6 @@ feature 'When a user visits a vending machine show page' do
     expect(page).to have_content("drink_1: $1.0")
     expect(page).to have_content("drink_2: $2.0")
     expect(page).to have_content("drink_3: $1.5")
+    expect(page).to have_content("Average Price: $1.5")
   end
 end
